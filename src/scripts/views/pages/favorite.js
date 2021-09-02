@@ -18,8 +18,8 @@ const Favorite = {
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
     if (restaurants.length > 0) {
       const restaurantWrapper = document.getElementById('restaurantWrapper');
+      restaurantWrapper.innerHTML = '';
       restaurants.forEach((restaurant) => {
-        restaurantWrapper.innerHTML = '';
         restaurantWrapper.innerHTML += createRestaurantListItem(restaurant);
       });
       return;
