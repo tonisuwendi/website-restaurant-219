@@ -1,0 +1,178 @@
+@media screen and (max-width: 1050px) {
+  main {
+    .restaurant-container {
+      width: 700px;
+
+      .food-wrapper {
+        .box-wrapper {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+      }
+
+      .box-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+
+        .box-item {
+          .info {
+            padding: 12px;
+            padding-bottom: 20px;
+
+            .name-skeleton {
+              width: 130px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    .jumbotron {
+      .text {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  main {
+    .restaurant-container {
+      width: 500px;
+
+      .food-wrapper {
+        .box-wrapper {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+        }
+      }
+
+      .box-wrapper {
+        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .detail-restaurant {
+      .section {
+        display: block;
+
+        .img-restaurant {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    padding: 0 25px;
+
+    nav {
+      display: none;
+    }
+
+    button {
+      display: block;
+
+      .fa {
+        color: white;
+        font-size: 25px;
+        padding: 10px;
+        min-width: 44px;
+      }
+    }
+  }
+
+  aside {
+    display: block;
+  }
+
+  main {
+    .jumbotron {
+      background-image: url('../public/images/heros/hero-small.jpg');
+
+      .text {
+        width: 100%;
+
+        h1 {
+          font-size: 40px;
+          line-height: 50px;
+        }
+
+        p {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  main {
+    .jumbotron {
+      .text {
+        h1 {
+          font-size: 25px;
+          line-height: 35px;
+        }
+
+        p {
+          font-size: 15px;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .restaurant-container {
+      width: 92%;
+
+      .title {
+        font-size: 18px;
+      }
+
+      .line {
+        width: 50px;
+      }
+
+      .box-wrapper {
+        display: block;
+
+        .box-item {
+          margin-bottom: 20px;
+
+          .info {
+            .name-skeleton {
+              width: 80%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 300px) {
+  header {
+    padding: 0 20px;
+
+    img {
+      height: 45px;
+      padding: 10px;
+    }
+
+    button {
+      height: 40px;
+      min-width: 0;
+    }
+  }
+
+  aside {
+    padding: 10px 20px;
+  }
+}

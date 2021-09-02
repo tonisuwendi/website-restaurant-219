@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+$box-shadow: 1px 10px 50px rgba(0, 0, 0, 0.1);
+$border-radius: 5px;
+$color-100: #ff9416;
+$color-200: #ca710a;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fdfcf9;
+}
+
+a {
+  text-decoration: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: $color-100;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.show-aside-menu-mobile {
+  transform: translate(0, 0);
+}
+
+header {
+  align-items: center;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  position: sticky;
+  padding: 0 50px;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+
+  .logo-app {
+    cursor: pointer;
+    padding: 10px;
+    height: 45px;
+    width: 150px;
+  }
+
+  ul {
+    display: flex;
+    line-height: 70px;
+
+    li {
+      list-style-type: none;
+
+      a {
+        display: inline-block;
+        color: white;
+        font-weight: 500;
+        min-width: 44px;
+        margin: 0 5px;
+        padding: 0 15px;
+        transition: 0.2s;
+
+        &:hover {
+          color: #ccc;
+        }
+      }
+    }
+  }
+
+  button {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+aside {
+  background-color: white;
+  box-shadow: $box-shadow;
+  display: none;
+  padding: 15px 25px;
+  position: fixed;
+  top: 70px;
+  transform: translate(0, -300px);
+  transition: 0.3s;
+  width: 100%;
+  z-index: 2;
+
+  ul {
+    li {
+      list-style-type: none;
+
+      a {
+        color: #222;
+        display: block;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 13px 0;
+        transition: 0.2s;
+
+        &:hover {
+          color: #777;
+        }
+      }
+    }
+  }
+}
+
+main {
+  min-height: calc(100vh - 200px);
+
+  .jumbotron {
+    align-items: center;
+    background-image: url('../public/images/heros/hero-large.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    height: 350px;
+    position: relative;
+    width: 100%;
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .text {
+      color: white;
+      position: absolute;
+      text-align: center;
+      width: 800px;
+
+      h1 {
+        font-family: 'Secular One', sans-serif;
+        font-size: 45px;
+        text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      p {
+        font-size: 20px;
+        text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+
+  .restaurant-container {
+    position: relative;
+    margin: auto;
+    padding-top: 50px;
+    width: 1000px;
+
+    .loading-content,
+    .error-message {
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      margin: 20px 0;
+      text-align: center;
+      width: 100%;
+
+      img {
+        margin: auto;
+        margin-bottom: 10px;
+        width: 30px;
+      }
+    }
+
+    .error-message {
+      strong {
+        color: orangered;
+      }
+    }
+
+    .food-wrapper {
+      margin-top: 70px;
+
+      .box-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .line {
+      background-color: $color-100;
+      border-radius: 10px;
+      height: 4px;
+      margin: 10px auto;
+      width: 100px;
+    }
+
+    .box-wrapper {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 30px;
+
+      .box-item {
+        background-color: white;
+        border-radius: $border-radius;
+        border: 1px solid #ddd;
+        height: auto;
+        overflow: hidden;
+        position: relative;
+        transition: 0.2s;
+
+        .shimmer-skeleton {
+          background-color: #ddd;
+          overflow: hidden;
+          position: relative;
+
+          &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+              90deg,
+              rgba(#fff, 0) 0,
+              rgba(#fff, 0.2) 20%,
+              rgba(#fff, 0.5) 60%,
+              rgba(#fff, 0)
+            );
+            animation: shimmer 1.5s infinite;
+            content: '';
+          }
+
+          @keyframes shimmer {
+            100% {
+              transform: translateX(100%);
+            }
+          }
+        }
+
+        .thumb-skeleton {
+          height: 200px;
+          width: 100%;
+        }
+
+        .thumb {
+          height: 200px;
+          overflow: hidden;
+          position: relative;
+          width: 100%;
+
+          img {
+            height: 200px;
+            object-fit: cover;
+            transition: 0.3s;
+            width: 100%;
+          }
+
+          .city {
+            background-color: black;
+            border-radius: $border-radius;
+            bottom: 5px;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 15px;
+            position: absolute;
+            right: 5px;
+            z-index: 1;
+          }
+        }
+
+        .info {
+          padding: 15px 20px;
+          padding-bottom: 20px;
+
+          .rating {
+            background-color: $color-100;
+            border-radius: $border-radius;
+            color: white;
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 2px 5px;
+          }
+
+          .rating-skeleton {
+            width: 65px;
+            height: 19px;
+          }
+
+          .name {
+            color: #222;
+            margin-top: 10px;
+          }
+
+          .name-skeleton {
+            height: 24px;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            width: 200px;
+          }
+
+          .description {
+            color: #444;
+            display: -webkit-box;
+            font-size: 15px;
+            margin-bottom: 20px;
+            margin-top: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+          }
+
+          .description-skeleton {
+            height: 15px;
+            margin-top: 5px;
+          }
+
+          .btn-see-more {
+            background-color: $color-100;
+            border-radius: $border-radius;
+            display: block;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 13px;
+            text-align: center;
+            transition: 0.2s;
+            width: 100%;
+
+            &:hover {
+              background-color: $color-200;
+            }
+          }
+
+          .button-skeleton {
+            height: 40px;
+            margin-top: 20px;
+          }
+        }
+
+        &:hover {
+          box-shadow: 0 48px 100px 0 rgba(17, 12, 46, 0.15);
+          transform: translate(0, -2px);
+        }
+      }
+    }
+  }
+
+  .detail-restaurant {
+    .section {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 30px;
+
+      .img-restaurant {
+        border-radius: $border-radius;
+        width: 100%;
+      }
+
+      .name {
+        font-size: 30px;
+      }
+
+      .rating {
+        background-color: $color-100;
+        border-radius: $border-radius;
+        color: white;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 5px;
+        padding: 3px 6px;
+      }
+
+      .city {
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+
+      .city,
+      .address {
+        font-size: 17px;
+      }
+
+      #favoriteButtonContainer {
+        display: inline-block;
+
+        .favorite {
+          border: none;
+          background-color: transparent;
+          border: 2px solid $color-100;
+          border-radius: $border-radius;
+          color: $color-100;
+          cursor: pointer;
+          font-size: 15px;
+          font-weight: 600;
+          margin-top: 20px;
+          padding: 13px 25px;
+          transition: 0.2s;
+
+          i {
+            font-weight: 700;
+          }
+
+          &:hover {
+            background-color: $color-100;
+            color: white;
+          }
+        }
+
+        .favorited {
+          background-color: $color-100;
+          color: white;
+
+          &:hover {
+            border: 2px solid $color-200;
+            background-color: $color-200;
+          }
+        }
+      }
+    }
+
+    .description {
+      color: #222;
+      margin-top: 10px;
+    }
+
+    .reviews {
+      border-top: 1px solid #ddd;
+      padding-top: 30px;
+      margin-top: 30px;
+
+      .item {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: $border-radius;
+        margin: 10px 0;
+        padding: 20px;
+        width: 100%;
+
+        p {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .menu-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 15px;
+    }
+
+    form {
+      width: 100%;
+
+      .form-group {
+        margin: 15px 0;
+
+        label {
+          color: #444;
+          font-size: 17px;
+        }
+
+        .form-control {
+          border: 1px solid #ccc;
+          border-radius: $border-radius;
+          font-size: 15px;
+          font-weight: 500;
+          height: 44px;
+          outline: none;
+          padding: 15px;
+          margin-top: 7px;
+          transition: 0.2s;
+          width: 100%;
+
+          &:focus {
+            border: 1px solid $color-100;
+          }
+        }
+
+        textarea.form-control {
+          height: 100px;
+        }
+      }
+
+      button {
+        background-color: $color-100;
+        border: none;
+        border-radius: $border-radius;
+        color: white;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+        outline: none;
+        padding: 13px 30px;
+        transition: 0.2s;
+
+        &:hover {
+          background-color: $color-200;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  align-items: center;
+  background-color: #222;
+  color: white;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  margin-top: 70px;
+  width: 100%;
+
+  p {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+}
